@@ -1,0 +1,6 @@
+print("Before using end=" " ")
+print("My name is")
+print("Pritu Dhar")
+print("After using end=" " ")
+print("My name is",end=" ")
+print("Pritu Dhar")

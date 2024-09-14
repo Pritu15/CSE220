@@ -1,0 +1,5 @@
+# Ignore the recordings folder
+/recordings/
+
+# Ignore the .venv folder
+/.venv/
