@@ -37,33 +37,35 @@ def time_shift_signal(x : np.ndarray, k : int) -> np.ndarray:
     a=np.ones(len(x))
     np.copyto(a,x)
     x=np.roll(x,k)
-    if k>0:
-        x[:k]=0
+    # if k>0:
+    #     x[:k]=0
         
-    #   p=len(x);
-    #   for i in range(p):
-    #     if(i>=k):
-    #         x[i]=a[i-k]
-    #     else:
-    #         x[i]=0
-    elif k==0:
-        return a        
-    else:
-        x[k:]=0
-        # return b
-    #   p=len(x);
-    #   k=(-1*k)
-    #   for i in range(p):
-    #     if((i+k)<p):
-    #         x[i]=a[i+k]
-    #     else:
-    #         x[i]=0     
+    # #   p=len(x);
+    # #   for i in range(p):
+    # #     if(i>=k):
+    # #         x[i]=a[i-k]
+    # #     else:
+    # #         x[i]=0
+    # elif k==0:
+    #     return a        
+    # else:
+    #     x[k:]=0
+    #     # return b
+    # #   p=len(x);
+    # #   k=(-1*k)
+    # #   for i in range(p):
+    # #     if((i+k)<p):
+    # #         x[i]=a[i+k]
+    # #     else:
+    # #         x[i]=0     
     return x;
 
     
 
 def time_scale_signal(x : np.ndarray, k : int) -> np.ndarray:
     # implement this function
+    if k==1:
+        return x
     mid=len(x)//2
     a=x[:mid]
     a=np.flip(a)
