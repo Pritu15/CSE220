@@ -95,7 +95,10 @@ def time_scale_signal(x : np.ndarray, k : int) -> np.ndarray:
     #     return np.flip(x)
     # return x
     return p;
-
+def SHIFTING_SCALING(x,l,k):
+    scale=time_scale_signal(x,l)
+    solve=time_shift_signal(scale,k)
+    return solve
 
 def main():
     img_root_path = '.'
@@ -117,6 +120,8 @@ def main():
     plot(time_scale_signal(signal, 2), title='x[2n]', saveTo=f'{img_root_path}/x[2n].png')
     
     plot(time_scale_signal(signal, 1), title='x[1n]', saveTo=f'{img_root_path}/x[1n].png')
+    plot(SHIFTING_SCALING(signal,2,1), title='x[2(n-1)]', saveTo=f'{img_root_path}/x[2(n-1)].png')
+    
     
         
 
