@@ -67,6 +67,7 @@ def time_scale_signal(x : np.ndarray, k : int) -> np.ndarray:
     if k==1:
      print(x)
      return x
+      
     print("HEllo")
     p=np.zeros(len(x))
     np.copyto(p,x)
@@ -99,6 +100,33 @@ def SHIFTING_SCALING(x,l,k):
     scale=time_scale_signal(x,l)
     solve=time_shift_signal(scale,k)
     return solve
+def scale_frac(x,k):
+    p=np.zeros(len(x))
+   
+    np.copyto(p, x)  # Copy x into p
+
+    k = 1 / 2  # Scaling factor
+    mid = len(p) // 2  # Middle index
+
+    for i in range(mid):
+        # Compute the new index based on scaling
+        if (mid-i)%(1/k)==0:
+            new_index = mid-(int((mid - i) * k))
+            p[i] = x[new_index] 
+        else:
+            p[i] = 0  # Set to 0 if the index is out of bounds
+            # print(i)
+    for i in range(mid+1,len(x)):
+        if (i-mid)%(1/k)==0:
+            new_index = mid+(int((i-mid) * k))
+            if new_index<len(x):
+                p[i] = x[new_index]
+            else:
+                p[i]=0 
+        else:
+            p[i] = 0  # Set to 0 if the index is out of bounds
+            # print(i
+    return p
 
 def main():
     img_root_path = '.'
@@ -120,7 +148,9 @@ def main():
     plot(time_scale_signal(signal, 2), title='x[2n]', saveTo=f'{img_root_path}/x[2n].png')
     
     plot(time_scale_signal(signal, 1), title='x[1n]', saveTo=f'{img_root_path}/x[1n].png')
-    plot(SHIFTING_SCALING(signal,2,1), title='x[2(n-1)]', saveTo=f'{img_root_path}/x[2(n-1)].png')
+    plot(SHIFTING_SCALING(signal,2,-1), title='x[2(n+1)]', saveTo=f'{img_root_path}/x[2(n-1)].png')
+    plot(scale_frac(signal, 1/2), title='x[n/2]', saveTo=f'{img_root_path}/x[n/2].png')
+    
     
     
         
