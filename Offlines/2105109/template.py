@@ -35,7 +35,7 @@ class FourierSeries:
         dx=(b-a)/N
         x=np.linspace(a,b,N+1)
         y=self.func(x)
-        A=(1/(1*self.L))*np.trapz(y,x,dx)
+        A=(1/(2*self.L))*np.trapz(y,x,dx)
         return A
 
     def calculate_an(self, n, N=1000):
