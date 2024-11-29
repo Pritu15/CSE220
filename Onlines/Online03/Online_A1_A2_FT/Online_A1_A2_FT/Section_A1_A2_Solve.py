@@ -60,7 +60,7 @@ denoised_image=np.zeros((64,64))
 
 
 
-for i in range(image.shape[0]):
+for i in range(64):
     time = np.linspace(0, len(image[i]) / sample_rate, num=len(image[i]))
     interval_step = 1  # Adjust for sampling every 'interval_step' data points  
     data_sampled = image[i][::interval_step]
