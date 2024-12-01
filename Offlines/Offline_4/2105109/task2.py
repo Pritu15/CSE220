@@ -256,7 +256,7 @@ def generate_signal(frequency=5):
     
     
 
-runtime_comparison()
+# runtime_comparison()
 
 # signal_a = generate_signals()
 
